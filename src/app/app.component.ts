@@ -16,5 +16,5 @@ import { RegistroComponent } from './componentes/registro/registro.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'TpLabo4.VasquezYober';
+  title = 'TpLabo4VasquezYober';
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TpLabo4.VasquezYober": {
+    "TpLabo4VasquezYober": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TpLabo4.VasquezYober:build:production"
+              "buildTarget": "TpLabo4VasquezYober:build:production"
             },
             "development": {
-              "buildTarget": "TpLabo4.VasquezYober:build:development"
+              "buildTarget": "TpLabo4VasquezYober:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "TpLabo4.VasquezYober:build"
+            "buildTarget": "TpLabo4VasquezYober:build"
           }
         },
         "test": {
