@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tplabo4vasquezyoberVasquezYober": {
+    "tplabo4vasquezyober": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tplabo4vasquezyoberVasquezYober:build:production"
+              "buildTarget": "tplabo4vasquezyober:build:production"
             },
             "development": {
-              "buildTarget": "tplabo4vasquezyoberVasquezYober:build:development"
+              "buildTarget": "tplabo4vasquezyober:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +68,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tplabo4vasquezyoberVasquezYober:build"
+            "buildTarget": "tplabo4vasquezyober:build"
           }
         },
         "test": {
@@ -88,6 +88,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "tplabo4vasquezyober:build:production",
+              "serveTarget": "tplabo4vasquezyober:serve:production"
+            },
+            "development": {
+              "buildTarget": "tplabo4vasquezyober:build:development",
+              "serveTarget": "tplabo4vasquezyober:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

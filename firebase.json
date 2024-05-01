@@ -1,1 +1,9 @@
-{}
+{
+  "hosting": [
+    {
+      "target": "tplabo4vasquezyober",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

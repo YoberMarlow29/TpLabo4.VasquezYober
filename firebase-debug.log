@@ -18,7 +18,7 @@
 
 You're about to initialize a Firebase project in this directory:
 
-  C:\Users\Yober\Desktop\tplabo4vasquezyoberVasquezYober
+  C:\Users\Yober\Desktop\tplabo4vasquezyober
 
 [debug] [2024-04-22T23:17:57.476Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
 [debug] [2024-04-22T23:17:57.476Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
