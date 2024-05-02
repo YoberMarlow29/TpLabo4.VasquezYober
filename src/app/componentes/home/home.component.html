@@ -1,21 +1,45 @@
 <body>
-
     <section>
         <h1>Home</h1>
         <div class="top-right">
-            <label for="example">Label:</label>
-            <button>Button 1</button>
-            <button>Button 2</button>
-            <button>Button 3</button>
+            <!-- Mostrar información del usuario si está autenticado -->
+            <div>
+                @if (user) {
+
+                    <p [style.color]="'white'">{{ user.email }}</p>
+                    <button (click)="btnSalir()">Salir</button>
+
+                }
+
+            </div>
+            <!-- Mostrar botones de inicio de sesión y registro si el usuario no está autenticado -->
+            <div>
+                @if (!user) {
+                    <button (click)="openLogin()">Iniciar Sesión</button>
+                    <button (click)="openRegister()">Registrarse</button>
+                    
+                }
+
+            </div>
         </div>
     
         <div class="section-buttons">
-            <button>Button A</button>
-            <button>Button B</button>
-            <button>Button C</button>
-            <button>Button D</button>
-            <button>Button E</button>
+            <div>
+                @if(user){
+
+                    <button>Button A</button>
+                    <button>Button B</button>
+                    <button>Button C</button>
+                    <button>Button D</button>
+                    <button>Button E</button>
+                }
+                @if (!user) {
+
+                    <p>INICIAR SESION PARA PODER ACCEDER A LOS JUEGOS</p>
+                }
+                
+            </div>
+
         </div>
     </section>
-    
-    </body>
+</body>

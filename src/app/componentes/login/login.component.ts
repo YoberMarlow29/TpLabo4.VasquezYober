@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -30,24 +31,27 @@ export class LoginComponent {
 
     return this.loginForm?.controls;
   }
-  async btnLogin(){
+  async btnLogin() {
+    console.log("entro al botón");
 
-    console.log("entro al boton");
+    try {
+      const userCredential = await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+      if (userCredential) {
 
-      const user = await this.auth.login(this.loginForm.value.email,this.loginForm.value.password).catch((error)=>{
+        await this.auth.saveLoginInfo(this.loginForm.value.email);
 
-        console.log(error);
-      })
-
-      if(user){
-        this.route.navigate(['/home'])
-
-
-      }else{
-
-        console.log('provide correct values')
+        const usuario = {
+          email: this.loginForm.value.email,
+          timestamp: new Date().toISOString()
+        };       
+        
+        this.route.navigate(['/home']);
+      } else {
+        console.log('Error al autenticar');
       }
-
+    } catch (error) {
+      console.log(error);
+    }
   }
   btnCompletarDatos(){
 
@@ -56,5 +60,6 @@ export class LoginComponent {
       password: "123456"
     });
   }
+
 
 }
