@@ -1,12 +1,12 @@
 <body>
     <section>
-        <h1>Home</h1>
+        <h1 style="color:white">HOME</h1>
         <div class="top-right">
             <!-- Mostrar información del usuario si está autenticado -->
             <div>
                 @if (user) {
 
-                    <p [style.color]="'white'">{{ user.email }}</p>
+                    <p [style.color]="'white'">usuario: {{ user.email }}</p>
                     <button (click)="btnSalir()">Salir</button>
 
                 }
@@ -24,21 +24,40 @@
         </div>
     
         <div class="section-buttons">
-            <div>
-                @if(user){
 
-                    <button>Button A</button>
-                    <button>Button B</button>
-                    <button>Button C</button>
-                    <button>Button D</button>
-                    <button>Button E</button>
+                @if(user){
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/ahorcado.png" alt="ahorcado">
+                        </button>    
+                        <p style="color:white">ahorcado</p>
+                    </div>
+
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/mayormenor.jpg" alt="mayormenor">
+                        </button>    
+                        <p style="color:white">mayormenor</p>
+                    </div>
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/preguntados.png" alt="preguntados">
+                        </button>    
+                        <p style="color:white">preguntados</p>
+                    </div>
+
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/nose.jpg" alt="nose">
+                        </button>    
+                        <p style="color:white">nose</p>
+                    </div>
+                                  
                 }
                 @if (!user) {
 
-                    <p>INICIAR SESION PARA PODER ACCEDER A LOS JUEGOS</p>
-                }
-                
-            </div>
+                    <p style="color:white">INICIAR SESION PARA PODER ACCEDER A LOS JUEGOS</p>
+                }     
 
         </div>
     </section>

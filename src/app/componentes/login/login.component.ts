@@ -38,12 +38,7 @@ export class LoginComponent {
       const userCredential = await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
       if (userCredential) {
 
-        await this.auth.saveLoginInfo(this.loginForm.value.email);
-
-        const usuario = {
-          email: this.loginForm.value.email,
-          timestamp: new Date().toISOString()
-        };       
+        await this.auth.saveLoginInfo(this.loginForm.value.email);      
         
         this.route.navigate(['/home']);
       } else {

@@ -34,19 +34,18 @@ export class RegistroComponent {
 
   async btnRegister(){
 
+    try {
+      const userCredential = await this.auth.register(this.regForm.value.email, this.regForm.value.password);
+      if (userCredential) {
 
-    const user = await this.auth.register(this.regForm.value.email,this.regForm.value.password).catch((error)=>{
-
+        await this.auth.saveLoginInfo(this.regForm.value.email);      
+        
+        this.route.navigate(['/home']);
+      } else {
+        console.log('Error al autenticar');
+      }
+    } catch (error) {
       console.log(error);
-    })
-
-    if(user){
-      this.route.navigate(['/home'])
-
-
-    }else{
-
-      console.log('provide correct values')
     }
 
   }

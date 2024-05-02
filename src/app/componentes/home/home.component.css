@@ -24,17 +24,39 @@ section {
     right: 10px;
 }
 
-.section-buttons {
+.section-buttons button {
+    padding: 5px; /* Reduce el relleno del botón */
+    width: 50px; /* Ajusta el ancho del botón */
+    height: 50px; /* Ajusta la altura del botón */
+    border-radius: 50%; /* Hace que el botón tenga forma circular */
+}
+
+.section-buttons p {
+    font-size: 12px; /* Ajusta el tamaño de la fuente de la descripción */
+    text-align: center; /* Centra la descripción debajo del botón */
     display: flex;
-    justify-content: space-between;
+    justify-content:center; /* Distribuye los elementos de manera uniforme */
     margin-top: 20px;
 }
 
-.section-buttons button {
-    padding: 10px 20px;
+.section-buttons .button-item {
+    text-align: center; /* Centra los botones e imágenes */
+}
+
+.section-buttons img {
+    width: 50px; /* Establece el ancho deseado para todas las imágenes */
+    height: 50px; /* Establece la altura deseada para todas las imágenes */
+}
+
+
+.button-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-item button {
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+    padding: 0;
 }
