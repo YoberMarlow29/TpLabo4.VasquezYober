@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'quiensoy', component: QuienSoyComponent },
-    { path: 'registro', component: RegistroComponent },
+    { path: 'register', component: RegistroComponent },
     { path: 'error', component: ErrorComponent }, // Ruta para el componente de error
     { path: '**', redirectTo: 'error' }
 

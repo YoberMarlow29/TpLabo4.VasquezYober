@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
@@ -8,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class AuthService {
   
-  constructor(private authFirebase : Auth,private firestore: AngularFirestore ) {  }
+  constructor(private authFirebase : Auth,private firestore: AngularFirestore, private authAngular:AngularFireAuth ) {  }
 
   login(email : string, password: string){
 
@@ -32,28 +33,14 @@ export class AuthService {
     return this.authFirebase.signOut();
   }
 
-  getUserInfo() {
-    return new Promise<any>((resolve, reject) => {
-      this.authFirebase.onAuthStateChanged(user => {
-        if (user) {
-          // Si el usuario está autenticado, obtenemos su correo electrónico y la fecha de inicio de sesión
-          const email = user.email;
-          // Buscamos la información del usuario en Firestore
-          this.firestore.collection('usuarios', ref => ref.where('email', '==', email)).valueChanges().subscribe(data => {
-            if (data && data.length > 0) {
-              const userInfo = data[0];
-              resolve(userInfo);
-            } else {
-              console.log('No se encontró información del usuario en Firestore.');
-              resolve(null);
-            }
-          });
-        } else {
-          resolve(null);
-        }
-      });
-    });
+  getUserAdd(){
+
+    this.authAngular.authState;
   }
+
+
+
+  
 
 
 }

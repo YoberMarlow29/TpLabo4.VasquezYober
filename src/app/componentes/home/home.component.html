@@ -1,64 +1,7 @@
+<app-navbar></app-navbar>
 <body>
     <section>
-        <h1 style="color:white">HOME</h1>
-        <div class="top-right">
-            <!-- Mostrar información del usuario si está autenticado -->
-            <div>
-                @if (user) {
-
-                    <p [style.color]="'white'">usuario: {{ user.email }}</p>
-                    <button (click)="btnSalir()">Salir</button>
-
-                }
-
-            </div>
-            <!-- Mostrar botones de inicio de sesión y registro si el usuario no está autenticado -->
-            <div>
-                @if (!user) {
-                    <button (click)="openLogin()">Iniciar Sesión</button>
-                    <button (click)="openRegister()">Registrarse</button>
-                    
-                }
-
-            </div>
-        </div>
-    
-        <div class="section-buttons">
-
-                @if(user){
-                    <div class="button-item">
-                        <button class="icon-button">
-                            <img src="assets/img/ahorcado.png" alt="ahorcado">
-                        </button>    
-                        <p style="color:white">ahorcado</p>
-                    </div>
-
-                    <div class="button-item">
-                        <button class="icon-button">
-                            <img src="assets/img/mayormenor.jpg" alt="mayormenor">
-                        </button>    
-                        <p style="color:white">mayormenor</p>
-                    </div>
-                    <div class="button-item">
-                        <button class="icon-button">
-                            <img src="assets/img/preguntados.png" alt="preguntados">
-                        </button>    
-                        <p style="color:white">preguntados</p>
-                    </div>
-
-                    <div class="button-item">
-                        <button class="icon-button">
-                            <img src="assets/img/nose.jpg" alt="nose">
-                        </button>    
-                        <p style="color:white">nose</p>
-                    </div>
-                                  
-                }
-                @if (!user) {
-
-                    <p style="color:white">INICIAR SESION PARA PODER ACCEDER A LOS JUEGOS</p>
-                }     
-
+        <div class="section-buttons">  
         </div>
     </section>
 </body>

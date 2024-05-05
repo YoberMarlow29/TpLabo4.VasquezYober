@@ -1,4 +1,13 @@
 {
+  "targets": {
+    "tplab-4": {
+      "hosting": {
+        "tplabo4vasquezyober": [
+          "tplab-4"
+        ]
+      }
+    }
+  },
   "projects": {
     "default": "tplab-4"
   }

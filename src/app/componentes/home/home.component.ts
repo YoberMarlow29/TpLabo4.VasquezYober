@@ -1,33 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-
-  user: any; // Variable para almacenar la información del usuario
+export class HomeComponent implements OnInit{
 
   constructor(private route:Router, private auth: AuthService) {
+
+
   }
 
   ngOnInit(): void {
-    this.getUserInfo();
   }
 
-  getUserInfo() {
-    this.auth.getUserInfo().then(userInfo => {
-      this.user = userInfo;
-    }).catch(error => {
-      console.log('Error al obtener la información del usuario:', error);
-    });
-  }
 
   btnSalir() {
     
@@ -44,7 +37,7 @@ export class HomeComponent {
   }
 
   openRegister() {
-    this.route.navigate(['/register']);
+    this.route.navigate(['/registro']);
   }
 
 
