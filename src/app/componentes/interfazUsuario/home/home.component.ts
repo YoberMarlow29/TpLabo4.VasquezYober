@@ -1,14 +1,12 @@
 import { Component, OnInit,  } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import ChatComponent from '../../chat/chat.component';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent,CommonModule,ChatComponent],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

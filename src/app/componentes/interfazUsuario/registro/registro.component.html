@@ -13,8 +13,7 @@
                 <p class="text-white-50 mb-5">Por favor ingrese su correo y contraseña</p>
   
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input formControlName="email" type="email"  class="form-control form-control-lg" name="email" />
-                  <label class="form-label" for="typeEmailX">Email</label>
+                  <input formControlName="email" type="email" placeholder="correo electronico" class="form-control form-control-lg" name="email" />
                   <div>
                     @if (this.regForm.controls?.['email'].touched  && this.regForm.controls?.['email'].invalid) {
                       
@@ -31,8 +30,7 @@
                 </div>
 
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input formControlName="password" type="password"  class="form-control form-control-lg" name="password" />
-                  <label class="form-label" for="typePasswordX">Contraseña</label>
+                  <input formControlName="password" type="password" placeholder="contraseña"  class="form-control form-control-lg" name="password" />
                   <div>
                     <div>
                       @if (this.regForm.controls?.['password'].touched  && this.regForm.controls?.['password'].invalid) {

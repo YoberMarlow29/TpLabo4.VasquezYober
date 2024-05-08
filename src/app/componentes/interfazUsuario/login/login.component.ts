@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup,ReactiveFormsModule,Validators } from '@angular/
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { user } from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +18,7 @@ export default class LoginComponent {
 
   loginForm : FormGroup;
 
-  constructor(public auth: AuthService,public route:Router,public formBuilder: FormBuilder){
+  constructor(public auth: AuthService,public route:Router,public formBuilder: FormBuilder, private toastSvc : ToastrService ){
 
     this.loginForm = this.formBuilder.group({
 
@@ -39,17 +40,44 @@ export default class LoginComponent {
       const userCredential = await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
       if (userCredential) {
 
-        await this.auth.guardarInfoLogin(this.loginForm.value.email);  
+         this.auth.guardarInfoLogin(this.loginForm.value.email);  
         console.log(userCredential);  
-        console.log("ingreso");  
+        this.toastSvc.success('Inicio exitoso','Exito')
         
         this.route.navigate(['/home']);
       } else {
-        console.log('Error al autenticar');
+        this.toastSvc.info('Error','error')
+
       }
     } catch (error) {
-      console.log(error);
+
+      this.toastSvc.error('Error al inicar sesion','ERROR')
+
     }
+  }
+
+  async btnIngresarGoogle(){
+
+    try {
+
+      const userCredential = await this.auth.loginGoogle(this.loginForm.value.email,this.loginForm.value.password);
+
+      if (userCredential) {
+
+        this.auth.guardarInfoLogin(this.loginForm.value.email); 
+        this.toastSvc.success('Inicio exitoso','Exito')
+
+      }
+      
+    } catch (error) {
+
+      this.toastSvc.error('Error al inicar sesion','ERROR');
+
+    }
+
+ 
+
+
   }
   btnCompletarDatos(){
 

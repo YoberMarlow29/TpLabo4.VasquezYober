@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from '../clases/Usuario';
 import { Observable, map } from 'rxjs';
 import { Timestamp } from 'firebase/firestore';
+import { signInWithPopup } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
 
 
 @Injectable({
@@ -64,6 +66,11 @@ export class AuthService {
           });
         })
       );
+  }
+
+  loginGoogle(email : string, password: string){
+
+    return this.authAngular.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
 }

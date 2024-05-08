@@ -3,7 +3,7 @@ export const routes:Routes =[
 
 
     {path:'ahorcado', loadComponent: ()=> import('./ahorcado/ahorcado.component'),},
-    {path:'preguntados', loadComponent: ()=> import('./mayor-menor/mayor-menor.component'),},
+    {path:'mayormenor', loadComponent: ()=> import('./mayor-menor/mayor-menor.component'),},
 ]
 
 

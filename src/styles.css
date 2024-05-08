@@ -1,6 +1,9 @@
+@import 'ngx-toastr/toastr';
 body{
 
     background-image: url(./assets/img/fondoPantalla.jpg);
 }
+
+
 
 /* @import 'bootstrap/scss/bootstrap'; */
