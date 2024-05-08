@@ -1,0 +1,37 @@
+<body>
+    <section>
+        <div class="section-buttons">  
+            <div>
+                <ng-container *ngIf="(usuarioLogeado) === null">
+                    <!-- Mostrar mensaje si el usuario no está logueado -->
+                    
+                    <h2 class="display-1 text-decoration-underline" style="color: white;">Inicie sesión para acceder a los juegos.</h2>
+
+                </ng-container>
+
+                <ng-container *ngIf="usuarioLogeado">
+                    <!-- Mostrar botones de juegos si el usuario está logueado -->
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/ahorcado.png" alt="ahorcado">
+                        </button>    
+                        <p style="color:white">ahorcado</p>
+                    </div>
+    
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/mayormenor.jpg" alt="mayormenor">
+                        </button>    
+                        <p style="color:white">mayormenor</p>
+                    </div>
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/preguntados.png" alt="preguntados">
+                        </button>    
+                        <p style="color:white">preguntados</p>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </section>
+</body>

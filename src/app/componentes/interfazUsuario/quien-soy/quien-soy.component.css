@@ -1,0 +1,17 @@
+.container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 52, 102, 0.7); /* Color con transparencia */
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.7); /* Borde con transparencia */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.profile-image {
+    max-width: 100%;
+    border-radius: 50%;
+}
+h1, p {
+    text-align: center;
+    color: white;
+}

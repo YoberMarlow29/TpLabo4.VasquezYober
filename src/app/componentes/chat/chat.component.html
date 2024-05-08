@@ -1,4 +1,4 @@
-<div class="card text-center cardContainer" *ngIf="usuarioLogeado">
+<div class="card text-center cardContainer" *ngIf="usuarioLogeado"  >
     <div class="card-header">
       CHAT
     </div>
@@ -12,8 +12,7 @@
             <span class="fecha">{{ dato.fechaHorario | date: 'dd/MM/yyyy HH:mm' }}</span>
           </div>
         </div>
-      </div>
-      
+      </div>     
     </div>
     <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
         <div class="input-group mb-3">

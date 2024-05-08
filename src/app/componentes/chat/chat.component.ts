@@ -14,6 +14,7 @@ import { ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
   styleUrl: './chat.component.css'
 })
 export default class ChatComponent implements OnInit, AfterViewChecked {
+  
   @ViewChild('mensajeContainer', { static: false }) mensajeContainer: ElementRef;
 
 
@@ -21,6 +22,7 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
   usuarioLogeado : any;
   nuevoMensaje: Usuario;
   mensajes: any[] = [];
+
 
   constructor(private auth:AuthService){}
 
@@ -79,10 +81,7 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
 
     }else {
     console.log("El mensaje es inválido.");
-  }
-
-    
-      
+  }   
   }
 
 }

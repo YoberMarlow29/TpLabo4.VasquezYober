@@ -59,7 +59,6 @@ export class AuthService {
       .pipe(
         map((mensajes: any[]) => {
           return mensajes.map(mensaje => {
-            // Convierte el Timestamp en una fecha
             const fechaHorario = (mensaje.fechaHorario as Timestamp).toDate();
             return { ...mensaje, fechaHorario };
           });
