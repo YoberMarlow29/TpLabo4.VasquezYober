@@ -1,7 +1,37 @@
-<app-navbar></app-navbar>
 <body>
     <section>
         <div class="section-buttons">  
+            <div>
+                <ng-container *ngIf="(userLogged | async) === null">
+                    <!-- Mostrar mensaje si el usuario no está logueado -->
+                    Inicie sesión para acceder a los juegos.
+                </ng-container>
+
+                <ng-container *ngIf="userLogged">
+                    <!-- Mostrar botones de juegos si el usuario está logueado -->
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/ahorcado.png" alt="ahorcado">
+                        </button>    
+                        <p style="color:white">ahorcado</p>
+                    </div>
+    
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/mayormenor.jpg" alt="mayormenor">
+                        </button>    
+                        <p style="color:white">mayormenor</p>
+                    </div>
+                    <div class="button-item">
+                        <button class="icon-button">
+                            <img src="assets/img/preguntados.png" alt="preguntados">
+                        </button>    
+                        <p style="color:white">preguntados</p>
+                    </div>
+                </ng-container>
+            </div>
         </div>
     </section>
 </body>
+
+<app-chat></app-chat>

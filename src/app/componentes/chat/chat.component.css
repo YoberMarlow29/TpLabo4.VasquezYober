@@ -1,0 +1,68 @@
+.cardContainer{
+
+    width: 350px;
+    height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.card-header{
+
+    background-color: rgb(44, 44, 110);
+    color: white;
+    font-weight: 700;
+
+}
+
+.cardy-body{
+
+    padding: 0.5rem;
+    background-color: aliceblue;
+}
+
+.imgEnviar:active{
+
+    transform: scale(0.9);
+}
+
+.enviado{
+
+    display: block;
+    float: right;
+    background-color: teal;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 10px;
+    text-align: left;
+
+}
+
+.recibido{
+
+    display: block;
+    float: left;
+    background-color: gray;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.contenedorMensajes {
+    overflow-y: scroll; /* Permitir desplazamiento vertical */
+    overflow-x: hidden; /* Ocultar desplazamiento horizontal */
+    padding: 0.3rem;
+}
+
+.info {
+    font-size: 12px; /* Ajusta el tamaño del texto según lo necesites */
+    color: #ffffff; /* Cambia el color del texto si lo deseas */
+  }
+  
+  .info .email {
+    font-weight: bold; /* Opcional: Puedes hacer que el correo electrónico sea negrita */
+  }
+  .mensaje-container {
+    margin-bottom: 10px; /* Agrega margen inferior entre cada mensaje */
+  }

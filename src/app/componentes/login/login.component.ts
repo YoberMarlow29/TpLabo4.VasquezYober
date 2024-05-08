@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup,ReactiveFormsModule,Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { user } from '@angular/fire/auth';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export default class LoginComponent {
 
   loginForm : FormGroup;
 
@@ -33,13 +34,14 @@ export class LoginComponent {
     return this.loginForm?.controls;
   }
   async btnLogin() {
-    console.log("entro al botón");
 
     try {
       const userCredential = await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
       if (userCredential) {
 
-        await this.auth.saveLoginInfo(this.loginForm.value.email);      
+        await this.auth.guardarInfoLogin(this.loginForm.value.email);  
+        console.log(userCredential);  
+        console.log("ingreso");  
         
         this.route.navigate(['/home']);
       } else {

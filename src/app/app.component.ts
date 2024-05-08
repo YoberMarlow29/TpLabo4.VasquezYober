@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { HomeComponent } from './componentes/home/home.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { RegistroComponent } from './componentes/registro/registro.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,QuienSoyComponent,LoginComponent,
-    HomeComponent,FormsModule,RegistroComponent],
+    RouterOutlet,
+    FormsModule,NavbarComponent,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Usuario } from '../clases/Usuario';
+import { Observable, map } from 'rxjs';
+import { Timestamp } from 'firebase/firestore';
 
 
 @Injectable({
@@ -20,10 +23,10 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.authFirebase,email,password);
   }
 
-  async saveLoginInfo(email: string) {
-    const loginInfo = {
+  async guardarInfoLogin(email: string) {
+    const loginInfo : Usuario = {
       email: email,
-      timestamp: new Date()
+      fechaHorario: Timestamp.now(),
     };
 
     await this.firestore.collection('usuarios').add(loginInfo);
@@ -33,14 +36,35 @@ export class AuthService {
     return this.authFirebase.signOut();
   }
 
-  getUserAdd(){
+  getUserLogged(){
 
-    this.authAngular.authState;
+    return this.authAngular.authState;
   }
 
+   async guardarMensajeInfo(usuario: Usuario){
 
+    const mensajeInfo = usuario;
 
-  
+    await this.firestore.collection('mensajes').add(mensajeInfo);
 
+  } 
+
+  obtenerDatosUsuario(){
+
+    return this.authAngular.currentUser;
+  }
+
+  obtenerMensajes(): Observable<any[]> {
+    return this.firestore.collection('mensajes', ref => ref.orderBy('fechaHorario')).valueChanges()
+      .pipe(
+        map((mensajes: any[]) => {
+          return mensajes.map(mensaje => {
+            // Convierte el Timestamp en una fecha
+            const fechaHorario = (mensaje.fechaHorario as Timestamp).toDate();
+            return { ...mensaje, fechaHorario };
+          });
+        })
+      );
+  }
 
 }

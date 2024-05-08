@@ -2,16 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular/forms';
 import {  Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterModule,NavbarComponent],
+  imports: [ReactiveFormsModule,RouterModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
-export class RegistroComponent {
+export default class RegistroComponent {
 
   regForm : FormGroup;
 
@@ -39,7 +38,7 @@ export class RegistroComponent {
       const userCredential = await this.auth.register(this.regForm.value.email, this.regForm.value.password);
       if (userCredential) {
 
-        await this.auth.saveLoginInfo(this.regForm.value.email);      
+        await this.auth.guardarInfoLogin(this.regForm.value.email);      
         
         this.route.navigate(['/home']);
       } else {

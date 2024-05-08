@@ -1,0 +1,29 @@
+<div class="card text-center cardContainer" *ngIf="usuarioLogeado">
+    <div class="card-header">
+      CHAT
+    </div>
+    <div class="card-body">
+
+      <div class="contenedorMensajes" #mensajeContainer style="height: 21rem; overflow-y: auto;">
+        <div *ngFor="let dato of mensajes" class="mensaje-container p-2" [ngClass]="(usuarioLogeado.uid === dato.uid) ? 'enviado' : 'recibido'">
+          <div class="mensaje">{{ dato.mensaje }}</div>
+          <div class="info">
+            <span class="email">{{ dato.email }}</span> - 
+            <span class="fecha">{{ dato.fechaHorario | date: 'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje.mensaje"
+            [ngModelOptions]="{standalone: true}">
+            <div class="input-group-append" (click)="enviarMensaje()">
+              <span class="input-group-text" id="basic-addon2">
+                <img class="imgEnviar" src="/assets/img/enviar-mensaje.png" width="24px" alt="send message">
+              </span>
+            </div>
+          </div>
+    </form>
+  </div>

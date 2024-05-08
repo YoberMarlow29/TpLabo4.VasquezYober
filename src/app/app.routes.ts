@@ -1,18 +1,13 @@
 import { Routes } from '@angular/router';
-import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { HomeComponent } from './componentes/home/home.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
 import { ErrorComponent } from './componentes/error/error.component';
-
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
-  { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'quiensoy', component: QuienSoyComponent },
-    { path: 'register', component: RegistroComponent },
+
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'login', loadComponent: () => import('./componentes/login/login.component') },
+    { path: 'home', loadComponent: () => import('./componentes/home/home.component') },
+    { path: 'quiensoy', loadComponent: () => import('./componentes/quien-soy/quien-soy.component') },
+    { path: 'register', loadComponent: () => import('./componentes/registro/registro.component') },
     { path: 'error', component: ErrorComponent }, // Ruta para el componente de error
-    { path: '**', redirectTo: 'error' }
+    { path: '**', redirectTo: 'error' },
 
   ];

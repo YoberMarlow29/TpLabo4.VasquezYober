@@ -8,20 +8,36 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/login">Iniciar Sesion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/register">Registrarse</a>
-        </li>
+
+        <ng-container *ngIf="(userLogged | async) === null">
+          <!-- Si el usuario NO está logueado, mostrar los botones "Iniciar Sesión" y "Registrarse" -->
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/login">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/register">Registrarse</a>
+          </li>
+        </ng-container>
+
+        <!-- Elemento de navegación adicional -->
         <li class="nav-item">
           <a class="nav-link active" routerLink="/quiensoy">QuienSoy</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Salir</a>
-        </li>
 
+        <ng-container *ngIf="userLogged | async as user">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/home" (click)="logout()">Salir</a>
+          </li>
+        </ng-container>
       </ul>
     </div>
+  </div>
+
+  <!-- Mostrar información del usuario si está logueado -->
+  <div class="container-fluid" *ngIf="userLogged | async as user">
+    <a class="navbar-brand">
+      <img *ngIf="user.photoURL" [src]="user.photoURL" alt="" width="30" height="24" class="d-inline-block align-text-top ">
+        usuario = {{user.email}}
+    </a>
   </div>
 </nav>
