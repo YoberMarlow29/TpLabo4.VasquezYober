@@ -1,35 +1,42 @@
 <body>
     <section>
-        <div class="section-buttons">  
+        <div class="section-buttons">
             <div>
-                <ng-container *ngIf="(usuarioLogeado) === null">
-                    <!-- Mostrar mensaje si el usuario no está logueado -->
-                    
-                    <h2 class="display-1 text-decoration-underline" style="color: white;">Inicie sesión para acceder a los juegos.</h2>
+                  @if ((usuarioLogeado) === null) {
 
-                </ng-container>
+                    <h2 class="display-1 text-decoration-underline" style="color: white;">
+                      Inicie sesión para acceder a los juegos.
+                    </h2>
 
-                <ng-container *ngIf="usuarioLogeado">
+                  }
+                  @if (usuarioLogeado) {
                     <div class="button-item">
-                        <a routerLink="/games/ahorcado" class="icon-button">
-                            <img src="assets/img/ahorcado.png" alt="ahorcado">
-                        </a>    
-                        <p style="color:white">ahorcado</p>
-                    </div>
-                
-                    <div class="button-item">
-                        <a routerLink="/games/mayormenor" class="icon-button">
-                            <img src="assets/img/mayormenor.jpg" alt="mayormenor">
-                        </a>    
-                        <p style="color:white">mayormenor</p>
-                    </div>
-                    <div class="button-item">
-                        <a routerLink="/preguntados" class="icon-button">
-                            <img src="assets/img/preguntados.png" alt="preguntados">
-                        </a>    
-                        <p style="color:white">preguntados</p>
-                    </div>
-                </ng-container>
+                      <a routerLink="/games/ahorcado" class="icon-button">
+                          <img src="assets/img/ahorcado.png" alt="ahorcado">
+                      </a>
+                      <p style="color:white">ahorcado</p>
+                  </div>
+
+                  <div class="button-item">
+                      <a routerLink="/games/mayormenor" class="icon-button">
+                          <img src="assets/img/mayormenor.jpg" alt="mayormenor">
+                      </a>
+                      <p style="color:white">mayormenor</p>
+                  </div>
+                  <div class="button-item">
+                      <a routerLink="/games/preguntados" class="icon-button">
+                          <img src="assets/img/preguntados.png" alt="preguntados">
+                      </a>
+                      <p style="color:white">preguntados</p>
+                  </div>
+                  <div class="button-item">
+                    <a routerLink="/games/ruleta" class="icon-button">
+                        <img src="assets/img/ruleta.jpeg" alt="ruleta">
+                    </a>
+                    <p style="color:white">ruleta rusa</p>
+                </div>
+
+                  }
             </div>
         </div>
     </section>

@@ -1,0 +1,37 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="container">
+              <h1>Juego de Ruleta Rusa</h1>
+              <img src="assets/imgRuleta/giphy.gif" alt="Ruleta girando">
+              <div class="mensaje-final">
+                @if (juegoTerminado) {
+
+                  <h2>Juego terminado</h2>
+                  <p>¡Has perdido todas tus vidas!</p>
+                  <button (click)="reiniciarJuego()" class="btn btn-primary">Volver a jugar</button>
+                }
+              </div>
+              <div>
+                @if (!juegoTerminado) {
+
+                  <button (click)="disparar()" [disabled]="vidasRestantes === 0" class="btn btn-outline-light">¡Disparar!</button>
+                  <img src="assets/imgRuleta/apunte.png" alt="Estás vivo" class="estado" [hidden]="resultadoDisparo !== 'Vivo'">
+                  <p [hidden]="resultadoDisparo !== 'Vivo'">¡Estás vivo!</p>
+                  <img src="assets/imgRuleta/muerte2.png" alt="Perdiste una vida" class="estado" [hidden]="resultadoDisparo !== 'PerdioVida'">
+                  <p [hidden]="resultadoDisparo !== 'PerdioVida'">¡Perdiste una vida!</p>
+                  <p>Vidas: {{ vidasRestantes }}</p>
+                  <p>Muertes: {{ 3 - vidasRestantes }}</p>
+
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -11,45 +11,55 @@
                 <p class="text-white-50 mb-5">Por favor ingrese su correo y contraseña</p>
 
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input formControlName="email" type="email" placeholder="correo electronico" class="form-control form-control-lg" name="email" />
+                  <input formControlName="email" type="email" placeholder="correo electronico"
+                        class="form-control form-control-lg" name="email" />
                   <div>
                     @if (this.loginForm.controls?.['email'].touched  && this.loginForm.controls?.['email'].invalid) {
-                      
+
                       @if (errorControl['email'].errors?.['required']) {
 
-                        <span style="color: red;">Email requerido</span>
+                        <span style="color: red;">
+                          Email requerido
+                        </span>
                       }
                       @if (errorControl['email'].errors?.['pattern']) {
 
-                        <span style="color: red;">Email debe ser valido</span>
+                        <span style="color: red;">
+                          Email debe ser valido
+                        </span>
                       }
                     }
                   </div>
                 </div>
 
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input formControlName="password" type="password" placeholder="contraseña" class="form-control form-control-lg" name="password" />
+                  <input formControlName="password" type="password" placeholder="contraseña"
+                        class="form-control form-control-lg" name="password" />
                   <div>
                     @if(this.loginForm.controls?.['password'].touched  && this.loginForm.controls?.['password'].invalid){
 
                       @if (errorControl['password'].errors?.['required']) {
 
-                        <span style="color: red;">Contraseña requerida</span>
+                        <span style="color: red;">
+                          Contraseña requerida
+                        </span>
                       }
                     }
                   </div>
                 </div>
 
-                
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" id="btnLogin" (click)="btnLogin()" type="submit">INGRESAR</button>
-                  <hr>                
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" id="btnIngresarGoogle" (click)="btnIngresarGoogle()" type="submit">INGRESAR CON GOOGLE</button>
+
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5"
+                id="btnLogin" (click)="btnLogin()" type="submit">INGRESAR</button>
+                  <hr>
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5"
+                id="btnIngresarGoogle" (click)="btnIngresarGoogle()" type="submit">INGRESAR CON GOOGLE</button>
 
                 <hr>
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" id="btnCompletarDatos" (click)="btnCompletarDatos()" type="submit">COMPLETAR CAMPOS</button>
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5"
+                id="btnCompletarDatos" (click)="btnCompletarDatos()" type="submit">COMPLETAR CAMPOS</button>
 
                 <div>
-                  <!-- Enlace para "Registrarse" -->
                   <p class="text-white-50 mt-3"> ¿No tienes cuenta? <a routerLink='/registro'>Regístrate aquí</a></p>
                 </div>
               </div>

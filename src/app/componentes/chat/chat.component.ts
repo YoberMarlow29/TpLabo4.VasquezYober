@@ -14,11 +14,11 @@ import { ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
   styleUrl: './chat.component.css'
 })
 export default class ChatComponent implements OnInit, AfterViewChecked {
-  
+
   @ViewChild('mensajeContainer', { static: false }) mensajeContainer: ElementRef;
 
 
-  
+
   usuarioLogeado : any;
   nuevoMensaje: Usuario;
   mensajes: any[] = [];
@@ -41,7 +41,7 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
 
     this.auth.obtenerMensajes().subscribe(mensajes => {
       this.mensajes = mensajes;
-    });  
+    });
   }
 
   private scrollToBottom(): void {
@@ -49,20 +49,24 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
       this.mensajeContainer.nativeElement.scrollTop = this.mensajeContainer.nativeElement.scrollHeight;
     } catch(err) { }
   }
+
   enviarMensaje(){
 
     if (this.nuevoMensaje && this.nuevoMensaje.mensaje) {
 
       this.auth.obtenerDatosUsuario().then(user =>{
 
+        console.log(user);
+
         if(user){
-  
+
           const mensajeInfo: Usuario = {
             uid: user.uid,
             email: user.email,
             mensaje: this.nuevoMensaje.mensaje,
             fechaHorario: Timestamp.now(),
           };
+
           this.nuevoMensaje = mensajeInfo;
           this.auth.guardarMensajeInfo(this.nuevoMensaje);
 
@@ -71,17 +75,17 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
           console.log("mensaje exitoso");
 
         }else{
-  
+
           console.log("usuario no encontrado");
         }
       }).catch(error=>{
-  
+
         console.log("ERROR",error);
       });
 
     }else {
     console.log("El mensaje es inválido.");
-  }   
+  }
   }
 
 }

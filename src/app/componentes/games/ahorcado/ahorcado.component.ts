@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import palabrasJson from '../../../../assets/archivos/palabras.json';
+
 
 @Component({
   selector: 'app-ahorcado',
@@ -9,25 +11,35 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './ahorcado.component.css'
 })
 export default class AhorcadoComponent {
-  palabras: string[] = ['ELEFANTE', 'ARAÑA', 'FUTBOL', 'TENNIS', 'DIFICIL', 'GOKU', 'LUFFY', 'SIMIO'];
+
+
+  palabras: { palabra: string, pista: string }[] = palabrasJson;
   palabra: string;
-  palabraOculta: string; 
-  letrasDisponibles: string[] = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split(''); 
+  pista: string;
+  palabraOculta: string;
+  letrasDisponibles: string[] = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
   intentos: number = 0;
-  maxIntentos: number = 6;
+  maxIntentos: number = 7;
   gano: boolean = false;
   perdio: boolean = false;
 
-  constructor() {
+  constructor() { }
+
+  ngOnInit() {
     this.seleccionarPalabra();
   }
 
   seleccionarPalabra() {
-    this.palabra = this.palabras[Math.floor(Math.random() * this.palabras.length)];
+
+    const seleccion = this.palabras[Math.floor(Math.random() * this.palabras.length)];
+    this.palabra = seleccion.palabra;
+    this.pista = seleccion.pista;
     this.palabraOculta = '_'.repeat(this.palabra.length);
+
   }
 
   comprobar(letra: string) {
+
     if (!this.gano && !this.perdio && this.letrasDisponibles.includes(letra)) {
 
       if (this.palabra.includes(letra)) {
@@ -39,12 +51,13 @@ export default class AhorcadoComponent {
           if (this.palabra[i] === letra) {
 
             palabraConLetra += letra;
-          } 
+          }
           else {
 
             palabraConLetra += this.palabraOculta[i];
           }
         }
+
         this.palabraOculta = palabraConLetra;
 
         if (this.palabraOculta === this.palabra) {
@@ -64,10 +77,12 @@ export default class AhorcadoComponent {
   }
 
   reiniciarJuego() {
+
     this.intentos = 0;
     this.gano = false;
     this.perdio = false;
     this.seleccionarPalabra();
-    this.letrasDisponibles = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split(''); 
+    this.letrasDisponibles = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
+
   }
 }

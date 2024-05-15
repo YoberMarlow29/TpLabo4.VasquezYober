@@ -50,21 +50,21 @@
 }
 
 .contenedorMensajes {
-    overflow-y: scroll; /* Permitir desplazamiento vertical */
-    overflow-x: hidden; /* Ocultar desplazamiento horizontal */
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 0.3rem;
 }
 
 .info {
-    font-size: 12px; /* Ajusta el tamaño del texto según lo necesites */
-    color: #ffffff; /* Cambia el color del texto si lo deseas */
+    font-size: 12px;
+    color: #ffffff;
   }
-  
+
   .info .email {
-    font-weight: bold; /* Opcional: Puedes hacer que el correo electrónico sea negrita */
+    font-weight: bold;
   }
   .mensaje-container {
-    margin-bottom: 10px; /* Agrega margen inferior entre cada mensaje */
+    margin-bottom: 10px;
   }
 
 

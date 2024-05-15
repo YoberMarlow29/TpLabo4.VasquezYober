@@ -1,1 +1,33 @@
-<p>mayor-menor works!</p>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div>
+              @if (!finJuego) {
+                <h1>¿La siguiente carta es mayor o menor?</h1>
+                <img [src]="cartaActual.imagen" alt="Carta actual">
+                <div>
+                  <button (click)="adivinar('mayor')" class="btn btn-outline-light">Mayor</button>
+                  <button (click)="adivinar('menor')" class="btn btn-outline-light">Menor</button>
+                </div>
+                <p style="color: white;">{{ mensajeResultado }}</p>
+                <p style="color: white;">Puntuación: {{ puntuacion }}</p>
+              }
+            </div>
+            <div >
+              @if (finJuego) {
+
+                <h1>Juego terminado</h1>
+                <p style="color: white;">Puntuación final: {{ puntuacion }}</p>
+                <button (click)="reiniciarJuego()" class="btn btn-primary">Jugar de nuevo</button>
+
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

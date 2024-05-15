@@ -1,0 +1,9 @@
+.container {
+  text-align: center;
+}
+
+.estado {
+  width: 200px; /* Ajusta el tamaño según tu preferencia */
+  height: 200px; /* Ajusta el tamaño según tu preferencia */
+  margin-top: 20px; /* Ajusta el margen superior según tu preferencia */
+}

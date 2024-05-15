@@ -1,38 +1,52 @@
-<div class="row">
-    <div class="col text-center">
-        <img
-            src="assets/imgAhorcado/{{intentos}}.png"
-            style="width: 200px; height: auto;">
-        <h3>Intentos: <small>{{intentos}} / {{maxIntentos}}</small></h3>
-    </div>
-</div>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="row">
+              <div class="col text-center">
+                  <img src="assets/imgAhorcado/{{intentos}}.png" style="width: 200px; height: auto;">
+                  <h3 style="color: white;">Intentos: <small>{{intentos}} / {{maxIntentos}}</small></h3>
+              </div>
+            </div>
 
-<div class="row">
-    <div class="col text-center">
-        <h4>Palabra: {{ palabraOculta }}</h4> <!-- Muestra la palabra oculta -->
-    </div>
-</div>
+            <div class="row">
+              <div class="col text-center">
+                  <h4 style="color: white;">Pista: {{ pista }}</h4>
+                  <h4 style="color: white;">Palabra: {{ palabraOculta }}</h4>
+              </div>
+            </div>
 
-<div class="row" *ngIf="!gano && !perdio">
-    <div class="col text-center">
-        <button
-            (click)="comprobar(letra)"
-            *ngFor="let letra of letrasDisponibles"
-            class="btn btn-outline-danger"
-            [disabled]="perdio"> <!-- Deshabilita los botones si ya se perdió -->
-            {{letra}}
-        </button>
-    </div>
-</div>
+            <div class="row">
+              @if (!gano && !perdio)
+              {
+                <div class="col text-center">
 
-<div class="row" *ngIf="perdio">
-    <div class="col text-center">
-        <button class="btn btn-primary" (click)="reiniciarJuego()">Jugar de nuevo</button>
-    </div>
-</div>
+                  @for (letra of letrasDisponibles; track $index) {
+                  <button
+                    (click)="comprobar(letra)"
+                    class="btn btn-outline-danger"
+                    [disabled]="perdio"
+                    style="color: white;">
+                    {{letra}}
+                  </button>
 
-<div class="row" *ngIf="gano">
-    <div class="col text-center">
-        <button class="btn btn-primary" (click)="reiniciarJuego()">Jugar de nuevo</button>
+                  }
+              </div>
+              }
+            </div>
+
+            <div class="row">
+              @if (perdio || gano) {
+                <div class="col text-center">
+                  <button class="btn btn-primary" (click)="reiniciarJuego()">Jugar de nuevo</button>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>

@@ -65,7 +65,9 @@ export default class LoginComponent {
       if (userCredential) {
 
         this.auth.guardarInfoLogin(this.loginForm.value.email); 
-        this.toastSvc.success('Inicio exitoso','Exito')
+        this.toastSvc.success('Inicio exitoso','Exito');
+        this.route.navigate(['/home']);
+
 
       }
       

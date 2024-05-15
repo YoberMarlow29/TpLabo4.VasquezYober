@@ -13,7 +13,7 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   constructor(private authFirebase : Auth,private firestore: AngularFirestore, private authAngular:AngularFireAuth ) {  }
 
   login(email : string, password: string){
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.authFirebase.signOut();
+    return this.authAngular.signOut();
   }
 
   getUserLogged(){
@@ -49,7 +49,7 @@ export class AuthService {
 
     await this.firestore.collection('mensajes').add(mensajeInfo);
 
-  } 
+  }
 
   obtenerDatosUsuario(){
 

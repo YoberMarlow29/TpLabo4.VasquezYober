@@ -5,14 +5,18 @@
     <div class="card-body">
 
       <div class="contenedorMensajes" #mensajeContainer style="height: 21rem; overflow-y: auto;">
-        <div *ngFor="let dato of mensajes" class="mensaje-container p-2" [ngClass]="(usuarioLogeado.uid === dato.uid) ? 'enviado' : 'recibido'">
-          <div class="mensaje">{{ dato.mensaje }}</div>
-          <div class="info">
-            <span class="email">{{ dato.email }}</span> - 
-            <span class="fecha">{{ dato.fechaHorario | date: 'dd/MM/yyyy HH:mm' }}</span>
+        @for (dato of mensajes; track $index) {
+
+          <div class="mensaje-container p-2" [ngClass]="(usuarioLogeado.uid === dato.uid) ? 'enviado' : 'recibido'">
+            <div class="mensaje">{{ dato.mensaje }}</div>
+            <div class="info">
+              <span class="email">{{ dato.email }}</span> -
+              <span class="fecha">{{ dato.fechaHorario | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
           </div>
-        </div>
-      </div>     
+        }
+
+      </div>
     </div>
     <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
         <div class="input-group mb-3">

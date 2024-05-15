@@ -9,35 +9,40 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
 
-        <ng-container *ngIf="(userLogged | async) === null">
-          <!-- Si el usuario NO está logueado, mostrar los botones "Iniciar Sesión" y "Registrarse" -->
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/login">Iniciar Sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/register">Registrarse</a>
-          </li>
-        </ng-container>
+          @if (userLogged === null)
+          {
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/login">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/register">Registrarse</a>
+            </li>
 
-        <!-- Elemento de navegación adicional -->
+          }
+
         <li class="nav-item">
           <a class="nav-link active" routerLink="/quiensoy">QuienSoy</a>
         </li>
+          @if(userLogged){
 
-        <ng-container *ngIf="userLogged | async as user">
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/home" (click)="logout()">Salir</a>
-          </li>
-        </ng-container>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/home" (click)="logout()">Salir</a>
+            </li>
+          }
+
       </ul>
     </div>
   </div>
 
-  <!-- Mostrar información del usuario si está logueado -->
-  <div class="container-fluid" *ngIf="userLogged | async as user">
-    <a class="navbar-brand">
-      <img *ngIf="user.photoURL" [src]="user.photoURL" alt="" width="30" height="24" class="d-inline-block align-text-top ">
-        usuario = {{user.email}}
-    </a>
+  <div class="container-fluid">
+    @if (userLogged) {
+
+      <a class="navbar-brand">
+        <img *ngIf="userLogged.photoURL" [src]="userLogged.photoURL"
+        alt="" width="30" height="24" class="d-inline-block align-text-top ">
+          usuario = {{userLogged.email}}
+      </a>
+    }
+
   </div>
 </nav>
