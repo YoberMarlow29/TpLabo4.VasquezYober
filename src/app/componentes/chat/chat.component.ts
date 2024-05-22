@@ -17,25 +17,21 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('mensajeContainer', { static: false }) mensajeContainer: ElementRef;
 
-
-
-  usuarioLogeado : any;
+  usuarioLogeado: any;
   nuevoMensaje: Usuario;
   mensajes: any[] = [];
+  chatVisible: boolean = false;
 
-
-  constructor(private auth:AuthService){}
+  constructor(private auth: AuthService) { }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
   ngOnInit(): void {
-
     this.nuevoMensaje = {};
 
-    this.auth.getUserLogged().subscribe(usuario=>{
-
+    this.auth.getUserLogged().subscribe(usuario => {
       this.usuarioLogeado = usuario;
     });
 
@@ -47,19 +43,13 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
   private scrollToBottom(): void {
     try {
       this.mensajeContainer.nativeElement.scrollTop = this.mensajeContainer.nativeElement.scrollHeight;
-    } catch(err) { }
+    } catch (err) { }
   }
 
-  enviarMensaje(){
-
+  enviarMensaje() {
     if (this.nuevoMensaje && this.nuevoMensaje.mensaje) {
-
-      this.auth.obtenerDatosUsuario().then(user =>{
-
-        console.log(user);
-
-        if(user){
-
+      this.auth.obtenerDatosUsuario().then(user => {
+        if (user) {
           const mensajeInfo: Usuario = {
             uid: user.uid,
             email: user.email,
@@ -69,23 +59,22 @@ export default class ChatComponent implements OnInit, AfterViewChecked {
 
           this.nuevoMensaje = mensajeInfo;
           this.auth.guardarMensajeInfo(this.nuevoMensaje);
-
-          this.nuevoMensaje.mensaje="";
+          this.nuevoMensaje.mensaje = "";
 
           console.log("mensaje exitoso");
-
-        }else{
-
+        } else {
           console.log("usuario no encontrado");
         }
-      }).catch(error=>{
-
-        console.log("ERROR",error);
+      }).catch(error => {
+        console.log("ERROR", error);
       });
-
-    }else {
-    console.log("El mensaje es inválido.");
+    } else {
+      console.log("El mensaje es inválido.");
+    }
   }
+
+  toggleChatVisibility() {
+    this.chatVisible = !this.chatVisible;
   }
 
 }

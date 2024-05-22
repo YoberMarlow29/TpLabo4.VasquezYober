@@ -1,4 +1,14 @@
-.list-group-item.selected {
-  background-color: #28a745 !important; /* Cambiar el color de fondo */
-  color: #ffffff !important; /* Cambiar el color del texto */
+.btn-success {
+  background-color: green;
+  border: 2px solid green;
+}
+
+.btn-danger {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  border: 2px solid white;
 }

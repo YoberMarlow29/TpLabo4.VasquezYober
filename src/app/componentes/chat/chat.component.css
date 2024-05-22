@@ -1,70 +1,91 @@
-.cardContainer{
-
-    width: 350px;
-    height: 500px;
-    position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
+.cardContainer {
+  width: 350px;
+  height: 500px;
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0.5rem;
 }
 
-.card-header{
-
-    background-color: rgb(44, 44, 110);
-    color: white;
-    font-weight: 700;
-
+.card-header {
+  background-color: rgb(44, 44, 110);
+  color: white;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.cardy-body{
-
-    padding: 0.5rem;
-    background-color: aliceblue;
+.card-header .minimize-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.imgEnviar:active{
-
-    transform: scale(0.9);
+.cardy-body {
+  padding: 0.5rem;
+  background-color: aliceblue;
 }
 
-.enviado{
-
-    display: block;
-    float: right;
-    background-color: teal;
-    color: white;
-    min-width: 50.01%;
-    border-radius: 10px;
-    text-align: left;
-
+.imgEnviar:active {
+  transform: scale(0.9);
 }
 
-.recibido{
+.enviado {
+  display: block;
+  float: right;
+  background-color: teal;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+}
 
-    display: block;
-    float: left;
-    background-color: gray;
-    color: white;
-    min-width: 50.01%;
-    border-radius: 10px;
-    text-align: left;
+.recibido {
+  display: block;
+  float: left;
+  background-color: gray;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
 }
 
 .contenedorMensajes {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 0.3rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0.3rem;
 }
 
 .info {
-    font-size: 12px;
-    color: #ffffff;
-  }
+  font-size: 12px;
+  color: #ffffff;
+}
 
-  .info .email {
-    font-weight: bold;
-  }
-  .mensaje-container {
-    margin-bottom: 10px;
-  }
+.info .email {
+  font-weight: bold;
+}
 
+.mensaje-container {
+  margin-bottom: 10px;
+}
 
+.floating-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #8cb7e8;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.floating-button img {
+  width: 100%;
+  height: auto;
+}

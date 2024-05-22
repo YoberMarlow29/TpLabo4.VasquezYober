@@ -6,28 +6,39 @@
           <div class="card-body p-5 text-center">
             <div class="container">
               <h1>Juego de Ruleta Rusa</h1>
-              <img src="assets/imgRuleta/giphy.gif" alt="Ruleta girando">
-              <div class="mensaje-final">
-                @if (juegoTerminado) {
+              @if (juegoIniciado && !juegoTerminado) {
 
+                <img src="assets/imgRuleta/giphy.gif" alt="Ruleta girando">
+              }
+
+              <div class="mensaje-final" >
+                @if (juegoTerminado) {
                   <h2>Juego terminado</h2>
                   <p>¡Has perdido todas tus vidas!</p>
                   <button (click)="reiniciarJuego()" class="btn btn-primary">Volver a jugar</button>
+
                 }
               </div>
-              <div>
-                @if (!juegoTerminado) {
 
-                  <button (click)="disparar()" [disabled]="vidasRestantes === 0" class="btn btn-outline-light">¡Disparar!</button>
+
+                @if (!juegoTerminado && juegoIniciado) {
+
+                  <button (click)="disparar()" [disabled]="vidasRestantes === 0 || disparoEnProgreso" class="btn btn-outline-light">¡Disparar!</button>
                   <img src="assets/imgRuleta/apunte.png" alt="Estás vivo" class="estado" [hidden]="resultadoDisparo !== 'Vivo'">
                   <p [hidden]="resultadoDisparo !== 'Vivo'">¡Estás vivo!</p>
                   <img src="assets/imgRuleta/muerte2.png" alt="Perdiste una vida" class="estado" [hidden]="resultadoDisparo !== 'PerdioVida'">
                   <p [hidden]="resultadoDisparo !== 'PerdioVida'">¡Perdiste una vida!</p>
                   <p>Vidas: {{ vidasRestantes }}</p>
                   <p>Muertes: {{ 3 - vidasRestantes }}</p>
+                }
+                @if (!juegoIniciado) {
+                  <button (click)="iniciarJuego()" class="btn btn-primary">Comenzar</button>
 
                 }
-              </div>
+
+              <audio id="sound-disparo" src="assets/audio/disparo.mp3"></audio>
+              <audio id="sound-nodisparo" src="assets/audio/nodisparo.mp3"></audio>
+              <audio id="sound-giro" src="assets/audio/giro.mp3"></audio>
             </div>
           </div>
         </div>

@@ -26,6 +26,7 @@ export default class AhorcadoComponent {
   constructor() { }
 
   ngOnInit() {
+
     this.seleccionarPalabra();
   }
 

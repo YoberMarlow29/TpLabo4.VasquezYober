@@ -26,7 +26,7 @@ export default class LoginComponent {
       Validators.email,
       Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$")
       ]],
-      
+
       password :['',[Validators.required ]]
     })
   }
@@ -40,10 +40,10 @@ export default class LoginComponent {
       const userCredential = await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
       if (userCredential) {
 
-         this.auth.guardarInfoLogin(this.loginForm.value.email);  
-        console.log(userCredential);  
+         this.auth.guardarInfoLogin(this.loginForm.value.email);
+        console.log(userCredential);
         this.toastSvc.success('Inicio exitoso','Exito')
-        
+
         this.route.navigate(['/home']);
       } else {
         this.toastSvc.info('Error','error')
@@ -63,21 +63,20 @@ export default class LoginComponent {
       const userCredential = await this.auth.loginGoogle(this.loginForm.value.email,this.loginForm.value.password);
 
       if (userCredential) {
+        console.log(userCredential);
 
-        this.auth.guardarInfoLogin(this.loginForm.value.email); 
+        this.auth.guardarInfoLogin(this.loginForm.value.email);
         this.toastSvc.success('Inicio exitoso','Exito');
         this.route.navigate(['/home']);
 
 
       }
-      
+
     } catch (error) {
 
       this.toastSvc.error('Error al inicar sesion','ERROR');
 
     }
-
- 
 
 
   }

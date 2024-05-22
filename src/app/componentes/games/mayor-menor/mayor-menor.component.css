@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+}
+
+.cartas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cartas img {
+  width: 150px;
+  height: 200px;
+  margin: 10px;
+}
+
+.reverso {
+  /* Estilos para la carta dada vuelta */
+  background: url('/assets/img/cartaDadaVuelta.png') no-repeat center center;
+  background-size: cover;
+}

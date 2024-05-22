@@ -5,31 +5,47 @@
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
               @if (!quizCompletado) {
-                <h2 class="fw-bold mb-4 text-uppercase">Pregunta {{ indiceActual + 1 }}</h2>
-                <p class="text-white mb-4">{{ preguntas[indiceActual]?.question }}</p>
-                <div class="form-check mb-4" >
-                  @for (respuesta of preguntas[indiceActual]?.incorrect_answers; track $index) {
 
-                    <input class="form-check-input" type="radio" name="respuesta"
-                    [id]="respuesta" (click)="comprobarRespuesta(respuesta)" >
-                    <label class="form-check-label text-white" [for]="respuesta">
-                      {{ respuesta }}
-                    </label>
+                <h2 class="fw-bold mb-4 text-uppercase">Pregunta {{ indiceActual + 1 }}</h2>
+                <p class="text-white mb-4">{{ preguntaActual()?.question }}</p>
+                <div>
+
+                  @for (respuesta of preguntaActual()?.incorrect_answers; track $index) {
+
+                    <button
+                    class="btn btn-lg mb-2"
+                    [disabled]="estaDeshabilitado()"
+                    (click)="comprobarRespuesta(respuesta)"
+                    [ngClass]="{'btn-success': esRespuestaCorrecta(respuesta),
+                    'btn-danger': esRespuestaIncorrecta(respuesta),
+                    'btn-outline-light': !estaDeshabilitado() && respuestaSeleccionada !== respuesta}">
+
+                    {{ respuesta }}
+                  </button>
+
                   }
 
                 </div>
-                <div class="form-check mb-4">
-                  <input class="form-check-input" type="radio" name="respuesta"
-                  [id]="preguntas[indiceActual]?.correct_answer" (click)="comprobarRespuesta(preguntas[indiceActual]?.correct_answer)" >
-                  <label class="form-check-label text-white" [for]="preguntas[indiceActual]?.correct_answer">
-                    {{ preguntas[indiceActual]?.correct_answer }}
-                  </label>
+
+                <button
+                  class="btn btn-lg mb-2"
+                  [disabled]="estaDeshabilitado()"
+                  (click)="comprobarRespuesta(preguntaActual()?.correct_answer)"
+                  [ngClass]="{'btn-success': esRespuestaCorrecta(preguntaActual()?.correct_answer),
+                  'btn-danger': esRespuestaIncorrecta(preguntaActual()?.correct_answer),
+                  'btn-outline-light': !estaDeshabilitado() && respuestaSeleccionada !== preguntaActual()?.correct_answer}">
+
+                  {{ preguntaActual()?.correct_answer }}
+
+                </button>
+                <div>
+
+                  <button class="btn btn-outline-light btn-lg px-5 mt-3" (click)="siguientePregunta()">Siguiente</button>
+
                 </div>
-                <button class="btn btn-outline-light btn-lg px-5" (click)="siguientePregunta()">Siguiente</button>
               }
-            <div>
-              @if (quizCompletado)
-              {
+
+              @if (quizCompletado) {
 
                 <h2 class="fw-bold mb-4 text-uppercase">¡Quiz Completado!</h2>
                 <p class="text-white mb-4">Respuestas Correctas: {{ respuestasCorrectas }} / {{ preguntas.length }}</p>
@@ -37,7 +53,7 @@
                 <button class="btn btn-outline-light btn-lg px-5" (click)="reiniciarJuego()">Reiniciar Juego</button>
 
               }
-            </div>
+
           </div>
         </div>
       </div>

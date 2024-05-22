@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PreguntadosService {
 
 
-  private apiUrl = 'https://opentdb.com/api.php?amount=5';
+  private apiUrl = 'https://opentdb.com/api.php?amount=10';
 
   constructor(private http: HttpClient) { }
 

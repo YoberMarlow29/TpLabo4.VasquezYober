@@ -3,7 +3,15 @@
 }
 
 .estado {
-  width: 200px; /* Ajusta el tamaño según tu preferencia */
-  height: 200px; /* Ajusta el tamaño según tu preferencia */
-  margin-top: 20px; /* Ajusta el margen superior según tu preferencia */
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.mensaje-final h2 {
+  color: red;
+}
+
+.mensaje-final p {
+  font-size: 1.2em;
 }
