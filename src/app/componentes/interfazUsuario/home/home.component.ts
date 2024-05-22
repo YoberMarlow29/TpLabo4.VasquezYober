@@ -24,9 +24,7 @@ export default class HomeComponent implements OnInit {
       this.usuarioLogeado = usuario;
     });
 
- 
+
   }
-
-
 
 }

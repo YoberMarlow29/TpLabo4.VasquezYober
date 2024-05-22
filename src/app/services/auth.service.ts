@@ -41,6 +41,7 @@ export class AuthService {
   getUserLogged(){
 
     return this.authAngular.authState;
+
   }
 
    async guardarMensajeInfo(usuario: Usuario){

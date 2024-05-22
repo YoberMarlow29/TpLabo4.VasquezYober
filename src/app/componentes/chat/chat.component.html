@@ -1,5 +1,4 @@
-@if (!chatVisible) {
-
+@if (!chatVisible && usuarioLogeado) {
   <button  (click)="toggleChatVisibility()" class="floating-button">
     <img src="/assets/img/chat.png" width="30px" alt="Toggle Chat">
   </button>
