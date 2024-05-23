@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular
 import {  Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -23,10 +24,10 @@ export default class RegistroComponent {
       Validators.email,
       Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$")
       ]],
-      
+
       password :['',[Validators.required ]]
-    })  
-  
+    })
+
   }
   get errorControl(){
 
@@ -39,21 +40,35 @@ export default class RegistroComponent {
       const userCredential = await this.auth.register(this.regForm.value.email, this.regForm.value.password);
       if (userCredential) {
 
-        await this.auth.guardarInfoLogin(this.regForm.value.email);      
-        this.toastSvc.success('Registro con exito','EXITO');
-
+        await this.auth.guardarInfoLogin(this.regForm.value.email);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Registro con exito",
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.route.navigate(['/home']);
-      } else {
-        this.toastSvc.error('error al autentificar','ERRROR');
-
       }
     } catch (error) {
       console.log(error);
       if (error.code === 'auth/email-already-in-use') {
-        this.toastSvc.warning('El correo electrónico ya está en uso', 'ERROR');
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "El correo ya se encuentra en uso",
+          showConfirmButton: false,
+          timer: 1500
+        });
       } else {
-        this.toastSvc.error('Error al registrarse', 'ERROR');
-      }    
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Error al registrarse",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
     }
 
   }

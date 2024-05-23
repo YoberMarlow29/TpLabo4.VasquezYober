@@ -11,14 +11,17 @@
                 <img src="assets/imgRuleta/giphy.gif" alt="Ruleta girando">
               }
 
-              <div class="mensaje-final" >
-                @if (juegoTerminado) {
-                  <h2>Juego terminado</h2>
+              <ng-container *ngIf="juegoTerminado">
+                <ng-container *ngIf="seGano === 6; else perdio">
+                  <h2 class="mensaje-gano">¡Has sobrevivido a la ruleta rusa, papu!</h2>
+                </ng-container>
+                <ng-template #perdio>
+                  <h2 class="mensaje-perdio">Juego terminado</h2>
                   <p>¡Has perdido todas tus vidas!</p>
-                  <button (click)="reiniciarJuego()" class="btn btn-primary">Volver a jugar</button>
+                </ng-template>
+                <button (click)="reiniciarJuego()" class="btn btn-primary">Volver a jugar</button>
+              </ng-container>
 
-                }
-              </div>
 
 
                 @if (!juegoTerminado && juegoIniciado) {

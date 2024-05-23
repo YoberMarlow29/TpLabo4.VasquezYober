@@ -5,6 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { user } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -42,16 +43,24 @@ export default class LoginComponent {
 
          this.auth.guardarInfoLogin(this.loginForm.value.email);
         console.log(userCredential);
-        this.toastSvc.success('Inicio exitoso','Exito')
-
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Inicio de sesion exitoso",
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.route.navigate(['/home']);
-      } else {
-        this.toastSvc.info('Error','error')
-
       }
     } catch (error) {
 
-      this.toastSvc.error('Error al inicar sesion','ERROR')
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error al iniciar sesion",
+        showConfirmButton: false,
+        timer: 1500
+      });
 
     }
   }

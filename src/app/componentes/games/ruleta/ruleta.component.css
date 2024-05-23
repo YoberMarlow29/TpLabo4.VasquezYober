@@ -8,7 +8,13 @@
   margin-top: 20px;
 }
 
-.mensaje-final h2 {
+
+.mensaje-gano {
+  color: rgb(13, 255, 0);
+
+}
+
+.mensaje-perdio  {
   color: red;
 }
 
